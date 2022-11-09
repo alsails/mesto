@@ -1,0 +1,20 @@
+.form__save-button {
+  padding: 12px 125px 16px 125px;
+
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+
+  color: #FFFFFF;
+
+  border: 0px;
+  border-radius: 2px;
+
+  background-color: black;
+}
+
+.form__save-button:hover {
+  opacity: .8;
+}
