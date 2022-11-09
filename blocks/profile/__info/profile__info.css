@@ -6,7 +6,7 @@
   grid-template-columns: 294px 24px;
   grid-template-rows: 48px 22px;
 
-  row-gap: 11px;
+  row-gap: 7px;
   column-gap: 18px;
 
   grid-template-areas:
@@ -34,7 +34,6 @@
     grid-template-rows: 33px 17px;
 
     column-gap: 10px;
-    row-gap: 7px;
   }
 }
 
