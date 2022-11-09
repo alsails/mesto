@@ -1,0 +1,13 @@
+.card__info {
+  display: flex;
+  height: 29px;
+
+  margin: 25px 15px 30px 21px;
+}
+
+@media screen and (max-width: 568px) {
+  .card__info {
+    margin-top: 24px;
+    margin-right: 20px;
+  }
+}
