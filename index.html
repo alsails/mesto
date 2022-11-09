@@ -22,7 +22,7 @@
       <section class="profile">
         <img src="./images/avatar.jpg" alt="" class="profile__img">
         <div class="profile__info">
-          <h1 class="profile__name">Жак-Ив Кусто</h1>
+          <h1 class="profile__name">Погонина Мария</h1>
           <p class="profile__description">Исследователь мира</p>
           <button class="profile__edit-button"></button>
         </div>
@@ -86,13 +86,15 @@
         <button class="popup__close-button"></button>
         <h2 class="popup__title">Редактировать профиль</h2>
         <form action="submit" class="form">
-          <input id="post-name" type="text" class="form__input" placeholder="Ваше Имя" value="Погонина Мария">
-          <input id="post-name" type="text" class="form__input" placeholder="О вас" value="Исследователь мира">
+          <input type="text" class="form__input" id="name" placeholder="Ваше Имя" value="">
+          <input type="text" class="form__input" id="description" placeholder="О вас" value="">
           <button type="submit" class="form__save-button">Сохранить</button>
         </form>
       </div>
     </div>
   </div>
+
+  <script type="text/javascript" src="./scripts/index.js"></script>
 </body>
 
 </html>
