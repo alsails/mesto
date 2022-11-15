@@ -2,13 +2,12 @@
   width: 24px;
   height: 24px;
 
-  border: 2px solid #fff;
+  border: 1px solid #fff;
   background-image: url("../../../images/pen.svg");
-  size: 10px 10px;
+  background-size: 10px 10px;
   background-repeat:no-repeat;
   background-position: center;
-  background-color: #000;
-  /* background-color: transparent; */
+  background-color: transparent;
 
   margin: 0 0 9px 0;
   align-self: flex-end;
@@ -17,7 +16,7 @@
 }
 
 .profile__edit-button:hover{
-  opacity: .7;
+  opacity: .6;
 }
 
 @media screen and (max-width: 568px) {
@@ -25,7 +24,7 @@
     width: 18px;
     height: 18px;
 
-    size: 7.5px 7.5px;
+    background-size: 7.5px 7.5px;
 
     margin-bottom: 6px;
 

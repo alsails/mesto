@@ -18,3 +18,12 @@
 .form__save-button:hover {
   opacity: .8;
 }
+
+@media screen and (max-width: 550px) {
+  .form__save-button {
+    padding: 14px 82px;
+
+    font-size: 14px;
+    line-height: 17px;
+  }
+}

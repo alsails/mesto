@@ -7,3 +7,10 @@
   margin: 195px auto 0 auto;
   position: relative;
 }
+
+@media screen and (max-width: 550px) {
+  .popup__profile {
+    width: calc(100% - 19px * 2);
+    margin: 123px 19px 0 19px;
+  }
+}

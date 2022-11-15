@@ -35,42 +35,42 @@
             <img src="./images/brazil.jpg" alt="Бразилия" class="card__img">
             <div class="card__info">
               <h2 class="card__name">Бразилия</h2>
-              <img src="./images/like.svg" alt="Лайк" class="card__like">
+              <button type="button" class="card__like"></button>
             </div>
           </li>
           <li class="card">
             <img src="./images/czech.jpg" alt="Чехия" class="card__img">
             <div class="card__info">
               <h2 class="card__name">Чехия</h2>
-              <img src="./images/like.svg" alt="Лайк" class="card__like">
+              <button type="button" class="card__like"></button>
             </div>
           </li>
           <li class="card">
             <img src="./images/japan.jpg" alt="Япония" class="card__img">
             <div class="card__info">
               <h2 class="card__name">Япония</h2>
-              <img src="./images/like.svg" alt="Лайк" class="card__like">
+              <button type="button" class="card__like"></button>
             </div>
           </li>
           <li class="card">
             <img src="./images/finland.jpg" alt="Финляндия" class="card__img">
             <div class="card__info">
               <h2 class="card__name">Финляндия</h2>
-              <img src="./images/like.svg" alt="Лайк" class="card__like">
+              <button type="button" class="card__like"></button>
             </div>
           </li>
           <li class="card">
             <img src="./images/romania.jpg" alt="Румыния" class="card__img">
             <div class="card__info">
               <h2 class="card__name">Румыния</h2>
-              <img src="./images/like.svg" alt="Лайк" class="card__like">
+              <button type="button" class="card__like"></button>
             </div>
           </li>
           <li class="card">
             <img src="./images/thailland.jpg" alt="Тайланд" class="card__img">
             <div class="card__info">
               <h2 class="card__name">Тайланд</h2>
-              <img src="./images/like.svg" alt="Лайк" class="card__like">
+              <button type="button" class="card__like"></button>
             </div>
           </li>
         </ul>
@@ -81,13 +81,13 @@
       <p class="footer__copyright">© 2022 Mesto Russia</p>
     </footer>
 
-    <div class="popup popup_hidden">
+    <div class="popup">
       <div class="popup__profile">
         <button type="button" class="popup__close-button"></button>
         <h2 class="popup__title">Редактировать профиль</h2>
-        <form action="submit" class="form">
-          <input type="text" class="form__input" id="name" placeholder="Ваше Имя" value="">
-          <input type="text" class="form__input" id="description" placeholder="О вас" value="">
+        <form action="submit" class="form" name="editProfile">
+          <input type="text" class="form__input form__input-name" name="name" placeholder="Ваше Имя" value="">
+          <input type="text" class="form__input form__input-description" name="description" placeholder="О вас" value="">
           <button type="submit" class="form__save-button">Сохранить</button>
         </form>
       </div>

@@ -8,6 +8,8 @@
   line-height: 17px;
 
   color: #000000;
+
+  padding-bottom: 9px;
 }
 
 .form__input:first-of-type {
@@ -16,4 +18,13 @@
 
 .form__input:last-of-type {
   margin-bottom: 48px;
+}
+
+@media screen and (max-width: 550px) {
+  .form__input:first-of-type {
+    margin-bottom: 30px;
+  }
+  .form__input:last-of-type {
+    margin-bottom: 45px;
+  }
 }
