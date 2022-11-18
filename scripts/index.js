@@ -12,8 +12,6 @@ const profileDescription = document.querySelector('.profile__description');
 function openPopUp() {
   popUp.classList.add('popup_opened');
 
-  console.log("А")
-
   nameInput.value = `${profileName.textContent}`;
   descriptionInput.value = `${profileDescription.textContent}`;
 };
