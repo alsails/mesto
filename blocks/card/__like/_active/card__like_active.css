@@ -1,4 +1,4 @@
-.card__like {
+.card__like_active {
   margin: 0 0 0 auto;
 
   width: 22px;
@@ -7,12 +7,10 @@
   align-self: center;
 
   border: none;
-  background-image: url("../../../images/like.svg");
+  background-image: url("../../../../images/like-active.svg");
   background-size: 22px 19px;
   background-repeat:no-repeat;
   background-position: center;
   background-color: transparent;
+  padding: 0;
 }
-
-
-

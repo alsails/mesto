@@ -9,7 +9,7 @@
   <meta name="keywords" content="Места, место, интеренсные места, путешествия">
   <meta name="author" content="Погонина Мария">
   <link rel="stylesheet" href="./pages/index.css">
-  <title>Masto</title>
+  <title>Mesto</title>
 </head>
 
 <body class="root">
@@ -31,54 +31,6 @@
 
       <section class="places">
         <ul class="cards">
-          <li class="card">
-            <button type="button" class="card__trash"></button>
-            <img src="./images/brazil.jpg" alt="Бразилия" class="card__img">
-            <div class="card__info">
-              <h2 class="card__name">Бразилия</h2>
-              <button type="button" class="card__like"></button>
-            </div>
-          </li>
-          <li class="card">
-            <button type="button" class="card__trash"></button>
-            <img src="./images/czech.jpg" alt="Чехия" class="card__img">
-            <div class="card__info">
-              <h2 class="card__name">Чехия</h2>
-              <button type="button" class="card__like"></button>
-            </div>
-          </li>
-          <li class="card">
-            <button type="button" class="card__trash"></button>
-            <img src="./images/japan.jpg" alt="Япония" class="card__img">
-            <div class="card__info">
-              <h2 class="card__name">Япония</h2>
-              <button type="button" class="card__like"></button>
-            </div>
-          </li>
-          <li class="card">
-            <button type="button" class="card__trash"></button>
-            <img src="./images/finland.jpg" alt="Финляндия" class="card__img">
-            <div class="card__info">
-              <h2 class="card__name">Финляндия</h2>
-              <button type="button" class="card__like"></button>
-            </div>
-          </li>
-          <li class="card">
-            <button type="button" class="card__trash"></button>
-            <img src="./images/Switzerland.jpg" alt="Швейцария" class="card__img">
-            <div class="card__info">
-              <h2 class="card__name">Швейцария</h2>
-              <button type="button" class="card__like"></button>
-            </div>
-          </li>
-          <li class="card">
-            <button type="button" class="card__trash"></button>
-            <img src="./images/thailland.jpg" alt="Тайланд" class="card__img">
-            <div class="card__info">
-              <h2 class="card__name">Тайланд</h2>
-              <button type="button" class="card__like"></button>
-            </div>
-          </li>
         </ul>
       </section>
     </main>
@@ -87,18 +39,41 @@
       <p class="footer__copyright">© 2022 Mesto Russia</p>
     </footer>
 
-    <div class="popup">
+    <div class="popup" id="profile">
       <div class="popup__profile">
-        <button type="button" class="popup__close-button"></button>
+        <button type="button" id="profile-close" class="popup__close-button"></button>
         <h2 class="popup__title">Редактировать профиль</h2>
         <form action="submit" class="form" name="editProfile">
-          <input type="text" class="form__input form__input-name" name="name" placeholder="Ваше Имя" value="">
-          <input type="text" class="form__input form__input-description" name="description" placeholder="О вас" value="">
-          <button type="submit" class="form__save-button">Сохранить</button>
+          <input type="text" class="form__input" name="name" placeholder="Ваше Имя" value="">
+          <input type="text" class="form__input" name="description" placeholder="О вас" value="">
+          <button type="submit"  class="form__save-button">Сохранить</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="popup" id="card">
+      <div class="popup__cards">
+        <button type="button" id="card-close" class="popup__close-button"></button>
+        <h2 class="popup__title">Новое место</h2>
+        <form action="submit" class="form" name="addCard">
+          <input type="text" class="form__input" name="title" placeholder="Название" value="">
+          <input type="text" class="form__input" name="link" placeholder="Ссылка на картинку" value="">
+          <button type="submit" class="form__save-button">Создать</button>
         </form>
       </div>
     </div>
   </div>
+
+  <template id="сard-template">
+    <li class="card">
+      <button type="button" class="card__trash"></button>
+      <img src="" alt="картинка" class="card__img">
+      <div class="card__info">
+        <h2 class="card__name"></h2>
+        <button type="button" class="card__like"></button>
+      </div>
+    </li>
+  </template>
 
   <script src="./scripts/index.js" defer></script>
 </body>
