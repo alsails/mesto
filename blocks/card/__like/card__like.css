@@ -14,5 +14,8 @@
   background-color: transparent;
 }
 
+.card__like:hover {
+  opacity: .6;
+}
 
 
