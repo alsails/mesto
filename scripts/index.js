@@ -3,8 +3,8 @@ const editButton = document.querySelector('.profile__edit-button');
 const addButton = document.querySelector('.profile__add-button');
 const popUpProfile = document.getElementById('profile');
 const popUpAdd = document.getElementById('card');
-const closeButtonProfile = document.querySelector('#profile-close');
-const closeButtonAdd = document.querySelector('#card-close');
+const popUpPhoto = document.getElementById('photo');
+const closeButton = document.querySelectorAll('.popup__close-button');
 const profileName = document.querySelector('.profile__name');
 const profileDescription = document.querySelector('.profile__description');
 
@@ -17,6 +17,10 @@ const descriptionInput = saveInfoProfile.querySelector('[name="description"]');
 const addCard = document.querySelector('[name="addCard"]');
 const titleInput = addCard.querySelector('[name="title"]');
 const linkInput = addCard.querySelector('[name="link"]');
+const formInpute = document.querySelector('.form__input');
+
+const popUpImg = document.querySelector('.popup__img');
+const popUpImgDescription = document.querySelector('.popup__description');
 
 // переменные для Template
 const cardsListElement = document.querySelector('.cards');
@@ -51,30 +55,22 @@ const initialCards = [
 ];
 
 
-// открытие PopUpProfile
-function openPopUpProfile() {
-  popUpProfile.classList.add('popup_opened');
+closeButton.forEach(evt => {
+  evt.addEventListener('click', () => evt.closest('.popup').classList.remove('popup_opened'));
+})
 
-  nameInput.value = `${profileName.textContent}`;
-  descriptionInput.value = `${profileDescription.textContent}`;
+
+// открытие PopUp
+function openPopUp(popup) {
+  if (popup === popUpProfile) {
+    nameInput.value = `${profileName.textContent}`;
+    descriptionInput.value = `${profileDescription.textContent}`;
+  }
+
+  popup.classList.add('popup_opened');
 };
 
-// открытие PopUpAdd
-function openPopUpAdd() {
-  popUpAdd.classList.add('popup_opened');
 
-  titleInput.value = "";
-  linkInput.value = "";
-};
-
-// закрытие PopUp
-function closePopUpProfile() {
-  popUpProfile.classList.remove('popup_opened');
-};
-
-function closePopUpAdd() {
-  popUpAdd.classList.remove('popup_opened');
-};
 
 // сохранение новый данных профиля
 function submitProfileInfo(evt) {
@@ -83,8 +79,7 @@ function submitProfileInfo(evt) {
   profileName.textContent = `${nameInput.value}`;
   profileDescription.textContent = `${descriptionInput.value}`;
 
-
-  closePopUpProfile();
+  popUpProfile.classList.remove('popup_opened');
 }
 
 
@@ -103,9 +98,21 @@ function createCards(item) {
   likeButton.addEventListener('click', clickCardLike);
   DelButton.addEventListener('click', clickCardDel);
 
+  cardImg.addEventListener('click', renderPopUpPhoto);
+
   return card;
 }
 
+const renderPopUpPhoto = (evt) => {
+
+  openPopUp(popUpPhoto);
+  popUpImg.src = evt.target.src;
+  popUpImgDescription.textContent =  evt.target.alt;
+}
+
+const openCardPhoto = (evt) => {
+  evt.target.classList.toggle('card__like_active');
+}
 // лайк карточки
 const clickCardLike = (evt) => {
   evt.target.classList.toggle('card__like_active');
@@ -129,21 +136,58 @@ initialCards.forEach(function (item) {
 // добавление карточки пользователем
 const submitAddCard = (evt) => {
   evt.preventDefault();
-
+  console.log(titleInput.value)
   const card = {
     name: titleInput.value,
     link: linkInput.value
   };
 
   renderCard(card, cardsListElement);
-  closePopUpAdd();
+
+  popUpAdd.classList.remove('popup_opened');
+
+  titleInput.value = "";
+  linkInput.value = "";
 }
 
-editButton.addEventListener('click', openPopUpProfile);
-addButton.addEventListener('click', openPopUpAdd);
-closeButtonProfile.addEventListener('click', closePopUpProfile);
-closeButtonAdd.addEventListener('click', closePopUpAdd);
+
+// cardPhoto.forEach(evt => {
+//   evt.addEventListener('click', () => console.log(evt));
+// })
+
+
+
+
+
+
+
+
+
+
+
+
+editButton.addEventListener('click', () => openPopUp(popUpProfile));
+addButton.addEventListener('click', () => openPopUp(popUpAdd));
 
 saveInfoProfile.addEventListener('submit', submitProfileInfo);
 addCard.addEventListener('submit', submitAddCard);
 
+//  cardPhoto.forEach(() => openPopUp(popUpPhoto));
+
+
+// const food = ['🍔', '🍟', '🍦']
+
+// cardPhoto.addEventListener('click', () => openPopUp(popUpPhoto));
+
+// cardPhoto.addEventListener('click', clickCardPhoto);
+
+// const clickCardPhoto = (evt) => {
+//   console.log(evt.target);
+// }
+
+// cardPhoto.forEach(evt => {
+//   evt.addEventListener('click', () => openPopUp(popUpPhoto));
+// })
+
+// console.log(cardPhotos)
+// console.log(document.querySelector('.page'));
