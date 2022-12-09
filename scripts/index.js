@@ -9,15 +9,15 @@ const profileName = document.querySelector('.profile__name');
 const profileDescription = document.querySelector('.profile__description');
 
 // переменные для form editProfile
-const saveInfoProfile = document.querySelector('[name="editProfile"]');
-const nameInput = saveInfoProfile.querySelector('[name="name"]');
-const descriptionInput = saveInfoProfile.querySelector('[name="description"]');
+const infoProfileSave = document.querySelector('[name="editProfile"]');
+const nameInput = infoProfileSave.querySelector('[name="name"]');
+const descriptionInput = infoProfileSave.querySelector('[name="description"]');
 
 // переменные для form cardAdd
 const cardAdd = document.querySelector('[name="addCard"]');
 const titleInput = cardAdd.querySelector('[name="title"]');
 const linkInput = cardAdd.querySelector('[name="link"]');
-const formInpute = document.querySelector('.form__input');
+const formInput = document.querySelector('.form__input');
 
 const popUpImg = document.querySelector('.popup__img');
 const popUpImgDescription = document.querySelector('.popup__description');
@@ -62,18 +62,15 @@ function createCard(item) {
 
   // cardImg.addEventListener('click', renderPopUpPhoto);
   cardImg.addEventListener('click', () => {
-    popUpImg.src = evt.target.src;
-    popUpImg.alt = evt.target.alt;
-    popUpImgDescription.textContent = evt.target.alt;
+    popUpImg.src = item.link;
+    popUpImg.alt = item.name;
+    popUpImgDescription.textContent = item.name;
     openPopUp(popUpPhoto);
   });
 
   return card;
 }
 
-const openCardPhoto = (evt) => {
-  evt.target.classList.toggle('card__like_active');
-}
 // лайк карточки
 const clickCardLike = (evt) => {
   evt.target.classList.toggle('card__like_active');
@@ -114,9 +111,9 @@ buttonEditProfile.addEventListener('click', () => {
   openPopUp(popUpEditProfile);
 });
 buttonAddCard.addEventListener('click', () => openPopUp(popUpAddCard));
-buttonsClose.forEach(evt => {
-  evt.addEventListener('click', () => closePopUp(evt.closest('.popup')));
+buttonsClose.forEach(buttonClose => {
+  buttonClose.addEventListener('click', () => closePopUp(buttonClose.closest('.popup')));
 })
 
-saveInfoProfile.addEventListener('submit', handleSubmitEditProfileForm);
+infoProfileSave.addEventListener('submit', handleSubmitEditProfileForm);
 cardAdd.addEventListener('submit', submitAddCard);
