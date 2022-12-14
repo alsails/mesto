@@ -44,9 +44,9 @@
         <button type="button" id="profile-close" class="popup__close-button"></button>
         <h2 class="popup__title">Редактировать профиль</h2>
         <form action="submit" class="form" name="editProfile">
-          <input type="text" class="form__input" name="name" placeholder="Ваше Имя" value="" required>
-          <input type="text" class="form__input" name="description" placeholder="О вас" value="" required>
-          <button type="submit"  class="form__save-button">Сохранить</button>
+          <input type="text" class="form__input" name="name" placeholder="Ваше Имя" value="" required minlength="2" maxlength="40">
+          <input type="text" class="form__input" name="description" placeholder="О вас" value="" required minlength="2" maxlength="200">
+          <button type="submit"  class="form__save-button form__save-button_disabled">Сохранить</button>
         </form>
       </div>
     </div>
@@ -56,9 +56,9 @@
         <button type="button" id="card-close" class="popup__close-button"></button>
         <h2 class="popup__title">Новое место</h2>
         <form action="submit" class="form" name="addCard">
-          <input type="text" class="form__input" name="title" placeholder="Название" value="" required>
-          <input type="text" class="form__input" name="link" placeholder="Ссылка на картинку" value="" required>
-          <button type="submit" class="form__save-button">Создать</button>
+          <input type="text" class="form__input" name="title" placeholder="Название" value="" required minlength="2" maxlength="30">
+          <input type="url" class="form__input" name="link" placeholder="Ссылка на картинку" value="" required>
+          <button type="submit" class="form__save-button form__save-button_disabled">Создать</button>
         </form>
       </div>
     </div>
