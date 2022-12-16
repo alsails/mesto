@@ -44,20 +44,18 @@ const setEventListeners = (form, config) => {
 // проверка всех полей на валидность
 function hasInvalidInput(inputs) {
   return inputs.some((input) => {
-  return !input.validity.valid;
-});
+    return !input.validity.valid;
+  });
 }
 
-// актировать кнопку или нет
-const toggleButton = (inputs, button, config) => {
+function toggleButton(inputs, button, config) {
   if (hasInvalidInput(inputs)) {
-    button.classList.remove(config.inactiveButtonClass);
-    button.disabled = ''
-  }
-  else {
-    button.classList.add(config.inactiveButtonClass);
-    button.disabled = 'disabled'
-  }
+  button.classList.add(config.inactiveButtonClass);
+  button.disabled = 'disabled'
+} else {
+  button.classList.remove(config.inactiveButtonClass);
+  button.disabled = ''
+}
 }
 
 // включение валидации
@@ -78,6 +76,6 @@ enableValidation({
   inputSelector: '.form__input',
   submitButtonSelector: '.form__save-button',
   inactiveButtonClass: 'form__save-button_disabled',
-  inputErrorClass: 'form__input_type_error', 
+  inputErrorClass: 'form__input_type_error',
   errorClass: 'form__error_visible'
 });

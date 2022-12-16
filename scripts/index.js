@@ -144,3 +144,5 @@ buttonsClose.forEach(buttonClose => {
   buttonClose.addEventListener('click', () => closePopUp(buttonClose.closest('.popup')));
 })
 
+infoProfileSave.addEventListener('submit', handleSubmitEditProfileForm);
+cardAdd.addEventListener('submit', submitAddCard);
