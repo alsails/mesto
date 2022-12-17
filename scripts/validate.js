@@ -1,31 +1,49 @@
 // отчистка ошибок в форме
-function resetError(popup) {
+// function resetError(popup) {
+//   const inputs = [...document.querySelectorAll('.form__input')];
+//   const errors = [...document.querySelectorAll('.form__error')];
+
+//   inputs.forEach((input) => {
+//     input.classList.remove('form__input_type_erro');
+//   });
+
+//   errors.forEach((error) => {
+//     error.textContent = ''
+//   });
+// }
+
+function resetError() {
   const inputs = [...document.querySelectorAll('.form__input')];
-  const errors = [...document.querySelectorAll('.form__error')];
-
-  inputs.forEach((input) => {
-    input.classList.remove('form__input_type_erro');
-  });
-
-  errors.forEach((error) => {
-    error.textContent = ''
-  });
-}
-
-// проверка валидации, выводить ли сообщение об ошибке
-const checkInputValidation = (input, config) => {
-  const error = document.querySelector(`#${input.id}-error`)
-
-  if (input.validity.valid) {
-    error.textContent = ''
-    error.classList.remove(config.errorClass);
-    input.classList.remove(config.inputErrorClass);
-  } else {
-    error.textContent = input.validationMessage
-    error.classList.add(config.errorClass);
-    input.classList.add(config.inputErrorClass);
+  const config = {
+    inputErrorClass: 'form__input_type_error',
+    errorClass: 'form__error_visible'
   }
+  inputs.forEach((input) => {
+    hideInputError(input, config)
+  });
 }
+
+const showInputError = (input, config) => {
+  const error = document.querySelector(`#${input.id}-error`)
+  input.classList.add(config.inputErrorClass);
+  error.textContent = input.validationMessage;
+  error.classList.add(config.errorClass);
+};
+
+const hideInputError = (input, config) => {
+  const error = document.querySelector(`#${input.id}-error`)
+  input.classList.remove(config.inputErrorClass);
+  error.classList.remove(config.errorClass);
+  error.textContent = '';
+};
+
+const checkInputValidation = (input, config) => {
+  if (!input.validity.valid) {
+    showInputError(input, config);
+  } else {
+    hideInputError(input, config);
+  }
+};
 
 //запуск валидации
 const setEventListeners = (form, config) => {
@@ -34,7 +52,7 @@ const setEventListeners = (form, config) => {
   toggleButton(inputs, button, config)
 
   inputs.forEach((input) => {
-    input.addEventListener('input', () => {
+    input.addEventListener('input', function () {
       checkInputValidation(input, config)
       toggleButton(inputs, button, config)
     });
@@ -65,6 +83,7 @@ const enableValidation = (config) => {
   forms.forEach((form) => {
     form.addEventListener('submit', function (evt) {
       evt.preventDefault();
+      evt.submitter.classList.add(config.inactiveButtonClass);
     });
     setEventListeners(form, config);
   });

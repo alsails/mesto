@@ -128,13 +128,13 @@ const submitAddCard = (evt) => {
 buttonEditProfile.addEventListener('click', () => {
   nameInput.value = profileName.textContent;
   descriptionInput.value = profileDescription.textContent;
-  resetError(popUpEditProfile)
+  resetError()
   openPopUp(popUpEditProfile);
 });
 
 // слушатель для кнопки открытия PopUp добавления карточки
 buttonAddCard.addEventListener('click', () => {
-  resetError(popUpAddCard)
+  resetError()
   cardAdd.reset()
   openPopUp(popUpAddCard)
 });
