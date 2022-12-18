@@ -1,19 +1,6 @@
 // отчистка ошибок в форме
-// function resetError(popup) {
-//   const inputs = [...document.querySelectorAll('.form__input')];
-//   const errors = [...document.querySelectorAll('.form__error')];
-
-//   inputs.forEach((input) => {
-//     input.classList.remove('form__input_type_erro');
-//   });
-
-//   errors.forEach((error) => {
-//     error.textContent = ''
-//   });
-// }
-
-function resetError() {
-  const inputs = [...document.querySelectorAll('.form__input')];
+function resetError(popup) {
+  const inputs = [...popup.querySelectorAll('.form__input')];
   const config = {
     inputErrorClass: 'form__input_type_error',
     errorClass: 'form__error_visible'
@@ -49,7 +36,12 @@ const checkInputValidation = (input, config) => {
 const setEventListeners = (form, config) => {
   const inputs = [...form.querySelectorAll(config.inputSelector)];
   const button = form.querySelector(config.submitButtonSelector)
-  toggleButton(inputs, button, config)
+
+  form.addEventListener('reset', () => {
+    setTimeout(() => {
+      toggleButton(inputs, button, config)
+    }, 0);
+  });
 
   inputs.forEach((input) => {
     input.addEventListener('input', function () {
@@ -83,7 +75,6 @@ const enableValidation = (config) => {
   forms.forEach((form) => {
     form.addEventListener('submit', function (evt) {
       evt.preventDefault();
-      evt.submitter.classList.add(config.inactiveButtonClass);
     });
     setEventListeners(form, config);
   });
