@@ -1,5 +1,5 @@
-import { Card } from './card.js';
-import { Validate } from './validate.js';
+import { Card } from './Card.js';
+import { FormValidator } from './FormValidator.js';
 import { settings, initialCards } from './settings.js';
 
 // переменные для popup
@@ -26,6 +26,7 @@ const popUpImg = document.querySelector('.popup__img');
 const popUpImgDescription = document.querySelector('.popup__description');
 
 const cardsListElement = document.querySelector('.cards');
+const selectorTemplate = document.querySelector('#сard-template').content.querySelector('.card');
 
 // прорисовка card
 const renderCard = (item, wrapElement) => {
@@ -35,17 +36,17 @@ const renderCard = (item, wrapElement) => {
 
 // создание card
 function createCard(item) {
-  const card = new Card(item, handleCardPopUpOpen);
+  const card = new Card(item, selectorTemplate, handleCardPopUpOpen);
   const cardElement = card.generateCard();
   return cardElement;
 
 }
 
-// создание popup card
-function handleCardPopUpOpen() {
-  popUpImg.src = this._img;
-  popUpImg.alt = this._name;
-  popUpImgDescription.textContent = this._name;
+//создание popup card
+function handleCardPopUpOpen(img, name) {
+  popUpImg.src = img;
+  popUpImg.alt = name;
+  popUpImgDescription.textContent = name;
   openPopUp(popUpPhoto);
 }
 
@@ -65,8 +66,6 @@ const submitAddCard = (evt) => {
 
   renderCard(card, cardsListElement);
   closePopUp(popUpAddCard);
-
-  cardAdd.reset();
 }
 
 
@@ -83,10 +82,17 @@ function closePopUp(popup) {
   document.removeEventListener('keyup', closePopUpByEscKey)
 }
 
+//сброс активации кнопки сохранить
+function resetButton(popup) {
+  const button = popup.querySelector('.form__save-button');
+  button.classList.add(settings.inactiveButtonClass);
+  button.setAttribute('disabled', true);
+}
+
 // открытие PopUp
 function openPopUp(popup) {
   popup.classList.add('popup_opened');
-  document.addEventListener('keyup', closePopUpByEscKey)
+  document.addEventListener('keyup', closePopUpByEscKey);;
 };
 
 // // сохранение новый данных профиля
@@ -103,11 +109,15 @@ function handleSubmitEditProfileForm(evt) {
 buttonEditProfile.addEventListener('click', () => {
   nameInput.value = profileName.textContent;
   descriptionInput.value = profileDescription.textContent;
+  validatorForPopUpEditProfile.resetError(popUpEditProfile)
+  resetButton(popUpEditProfile)
   openPopUp(popUpEditProfile);
 });
 
 // слушатель для кнопки открытия PopUp добавления карточки
 buttonAddCard.addEventListener('click', () => {
+  validatorForPopUpAddCard.resetError(popUpAddCard)
+  resetButton(popUpAddCard)
   cardAdd.reset()
   openPopUp(popUpAddCard)
 });
@@ -118,7 +128,7 @@ popups.forEach((popup) => {
     if (evt.target.classList.contains('popup_opened')) {
       closePopUp(popup)
     }
-    if (evt.target.classList.contains('popup__close-button')) {
+    else if (evt.target.classList.contains('popup__close-button')) {
       closePopUp(popup)
     }
   })
@@ -129,9 +139,10 @@ profileForm.addEventListener('submit', handleSubmitEditProfileForm);
 cardAdd.addEventListener('submit', submitAddCard);
 
 //создание объектов для валидации popup создания карточки и редатирования профиля
-const validatorForPopUpEditProfile = new Validate(settings, popUpEditProfile);
-const validatorForPopUpAddCard = new Validate(settings, popUpAddCard);
+const validatorForPopUpEditProfile = new FormValidator(settings, popUpEditProfile);
+const validatorForPopUpAddCard = new FormValidator(settings, popUpAddCard);
 
 //запуск валидации
 validatorForPopUpEditProfile.enableValidation();
 validatorForPopUpAddCard.enableValidation();
+

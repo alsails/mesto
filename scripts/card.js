@@ -1,46 +1,49 @@
 export class Card {
-  constructor(data, handleCardPopUpOpen) {
+  constructor(data, selectorTemplate, handleCardPopUpOpen) {
     this._name = data.name;
     this._img = data.link;
+    this._selectorTemplate = selectorTemplate;
     this._handleCardPopUpOpen = handleCardPopUpOpen;
   }
-  //template
+
   _getTemplate() {
-    const card =  document.querySelector('#сard-template').content.querySelector('.card').cloneNode(true);
-    return card
+    const card = this._selectorTemplate.cloneNode(true);
+    return card;
   }
 
-  //рендер карточек
   generateCard() {
     this._element = this._getTemplate();
 
-    this._element.querySelector('.card__img').src = this._img;
-    this._element.querySelector('.card__img').alt = this._name;
-    this._element.querySelector('.card__name').textContent = this._name;
+    this._cardImg = this._element.querySelector('.card__img');
+    this._cardName = this._element.querySelector('.card__name');
+
+    this._cardImg.src = this._img;
+    this._cardImg.alt = this._name;
+    this._cardName.textContent = this._name;
 
     this._setEventListeners();
     return this._element;
   }
 
-  //лайк
-  _like(button) {
+  _like = (button) => {
     button.classList.toggle('card__like_active');
   }
 
-  //удаление
-  _del(button) {
-    button.closest('.card').remove()
+  _del() {
+    this._element.remove();
+    this._element = null;
   }
 
   _setEventListeners() {
-    const cardAdd = document.forms['addCard'];
+    this._likeButton = this._element.querySelector('.card__like');
+    this._delButton = this._element.querySelector('.card__trash');
+    // const cardAdd = document.forms['addCard'];
 
-    this._element.querySelector('.card__img').addEventListener('click', () => {
-      this._handleCardPopUpOpen();
-    });
+    this._cardImg.addEventListener('click', () => {
+      this._handleCardPopUpOpen(this._img, this._name);
+    })
 
-    this._element.querySelector('.card__like').addEventListener('click', () => {this._like(this._element.querySelector('.card__like'))});
-    this._element.querySelector('.card__trash').addEventListener('click', () => {this._del(this._element.querySelector('.card__trash'))});
+    this._likeButton.addEventListener('click', () => { this._like(this._likeButton) });
+    this._delButton.addEventListener('click', () => { this._del() });
   }
-
 }

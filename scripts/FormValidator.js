@@ -1,4 +1,4 @@
-export class Validate {
+export class FormValidator {
   constructor(settings, formElement) {
     this._formElement = formElement,
       this._inputSelector = settings.inputSelector,
@@ -10,6 +10,12 @@ export class Validate {
     this._button = formElement.querySelector(settings.submitButtonSelector);
   }
 
+  resetError = (popup) => {
+    const inputs = [...popup.querySelectorAll('.form__input')];
+    inputs.forEach((input) => {
+      this._hideInputError(input)
+    });
+  }
   //отображение ошибки
   _showInputError = (input, validationMessage) => {
     const error = this._formElement.querySelector(`#${input.id}-error`)
@@ -46,10 +52,10 @@ export class Validate {
   _toggleButton() {
     if (this._hasInvalidInput(this._inputs)) {
       this._button.classList.add(this._inactiveButtonClass);
-      this._button.disabled = 'disabled'
+      this._button.setAttribute('disabled', true);
     } else {
       this._button.classList.remove(this._inactiveButtonClass);
-      this._button.disabled = ''
+      this._button.removeAttribute('disabled', false);
     }
   }
 
@@ -64,7 +70,7 @@ export class Validate {
     this._inputs.forEach((input) => {
       input.addEventListener('input', () => {
         this._checkInputValidation(input)
-        this._toggleButton(input)
+        this._toggleButton()
       });
     })
   }
