@@ -1,6 +1,6 @@
-import { Card } from './Card.js';
-import { FormValidator } from './FormValidator.js';
-import { settings, initialCards } from './settings.js';
+import { Card } from "./Card.js";
+import { FormValidator } from "./FormValidator.js";
+import { settings, initialCards } from "./settings.js";
 
 // переменные для popup
 const buttonEditProfile = document.querySelector('.profile__edit-button');
