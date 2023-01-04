@@ -37,7 +37,6 @@ export class Card {
   _setEventListeners() {
     this._likeButton = this._element.querySelector('.card__like');
     this._delButton = this._element.querySelector('.card__trash');
-    // const cardAdd = document.forms['addCard'];
 
     this._cardImg.addEventListener('click', () => {
       this._handleCardPopUpOpen(this._img, this._name);
