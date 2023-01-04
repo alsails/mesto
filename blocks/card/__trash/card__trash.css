@@ -16,6 +16,8 @@
   top: 20px;
   right: 20px;
   padding: 0;
+
+  cursor: pointer;
 }
 
 .card__trash:hover {

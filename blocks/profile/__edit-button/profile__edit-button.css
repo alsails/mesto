@@ -13,6 +13,8 @@
   align-self: flex-end;
 
   grid-area: button;
+
+  cursor: pointer;
 }
 
 .profile__edit-button:hover{
