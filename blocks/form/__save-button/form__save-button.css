@@ -1,5 +1,6 @@
 .form__save-button {
   padding: 12px 125px 16px 125px;
+  margin-top: 23px;
 
   font-style: normal;
   font-weight: 400;
@@ -13,7 +14,7 @@
   border-radius: 2px;
 
   background-color: black;
-  
+
   cursor: pointer;
 }
 
