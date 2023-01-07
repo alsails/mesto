@@ -1,13 +1,17 @@
 export class Card {
-  constructor(data, selectorTemplate, handleCardPopUpOpen) {
+  constructor(data, templateSelector, handleCardPopUpOpen) {
     this._name = data.name;
     this._img = data.link;
-    this._selectorTemplate = selectorTemplate;
+    this._templateSelector = templateSelector;
     this._handleCardPopUpOpen = handleCardPopUpOpen;
   }
 
   _getTemplate() {
-    const card = this._selectorTemplate.cloneNode(true);
+    const card = document
+      .querySelector(this._templateSelector)
+      .content
+      .querySelector('.card')
+      .cloneNode(true);
     return card;
   }
 
@@ -25,8 +29,8 @@ export class Card {
     return this._element;
   }
 
-  _like = (button) => {
-    button.classList.toggle('card__like_active');
+  _like() {
+    this._likeButton.classList.toggle('card__like_active');
   }
 
   _del() {
@@ -42,7 +46,7 @@ export class Card {
       this._handleCardPopUpOpen(this._img, this._name);
     })
 
-    this._likeButton.addEventListener('click', () => { this._like(this._likeButton) });
+    this._likeButton.addEventListener('click', () => { this._like() });
     this._delButton.addEventListener('click', () => { this._del() });
   }
 }

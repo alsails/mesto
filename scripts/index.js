@@ -26,7 +26,7 @@ const popUpImg = document.querySelector('.popup__img');
 const popUpImgDescription = document.querySelector('.popup__description');
 
 const cardsListElement = document.querySelector('.cards');
-const selectorTemplate = document.querySelector('#сard-template').content.querySelector('.card');
+// const selectorTemplate = document.querySelector('#сard-template').content.querySelector('.card');
 
 // прорисовка card
 const renderCard = (item, wrapElement) => {
@@ -36,7 +36,7 @@ const renderCard = (item, wrapElement) => {
 
 // создание card
 function createCard(item) {
-  const card = new Card(item, selectorTemplate, handleCardPopUpOpen);
+  const card = new Card(item, '.сard-template', handleCardPopUpOpen);
   const cardElement = card.generateCard();
   return cardElement;
 
@@ -82,13 +82,6 @@ function closePopUp(popup) {
   document.removeEventListener('keyup', closePopUpByEscKey)
 }
 
-//сброс активации кнопки сохранить
-function resetButton(popup) {
-  const button = popup.querySelector('.form__save-button');
-  button.classList.add(settings.inactiveButtonClass);
-  button.setAttribute('disabled', true);
-}
-
 // открытие PopUp
 function openPopUp(popup) {
   popup.classList.add('popup_opened');
@@ -109,17 +102,15 @@ function handleSubmitEditProfileForm(evt) {
 buttonEditProfile.addEventListener('click', () => {
   nameInput.value = profileName.textContent;
   descriptionInput.value = profileDescription.textContent;
-  validatorForPopUpEditProfile.resetError(popUpEditProfile)
-  resetButton(popUpEditProfile)
+  validatorForPopUpEditProfile.resetError();
   openPopUp(popUpEditProfile);
 });
 
 // слушатель для кнопки открытия PopUp добавления карточки
 buttonAddCard.addEventListener('click', () => {
-  validatorForPopUpAddCard.resetError(popUpAddCard)
-  resetButton(popUpAddCard)
-  cardAdd.reset()
-  openPopUp(popUpAddCard)
+  cardAdd.reset();
+  validatorForPopUpAddCard.resetError();
+  openPopUp(popUpAddCard);
 });
 
 //закрытие popup нажатием на крестик и оверлей

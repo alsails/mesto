@@ -10,14 +10,12 @@ export class FormValidator {
     this._button = formElement.querySelector(settings.submitButtonSelector);
   }
 
-  resetError = (popup) => {
-    const inputs = [...popup.querySelectorAll('.form__input')];
-    inputs.forEach((input) => {
-      this._hideInputError(input)
-    });
+  resetError () {
+    this._inputs.forEach((input) => this._hideInputError(input))
+    this._toggleButton()
   }
   //отображение ошибки
-  _showInputError = (input, validationMessage) => {
+  _showInputError (input, validationMessage) {
     const error = this._formElement.querySelector(`#${input.id}-error`)
     input.classList.add(this._inputErrorClass);
     error.textContent = validationMessage;
@@ -25,7 +23,7 @@ export class FormValidator {
   };
 
   //скрытие ошибки
-  _hideInputError = (input) => {
+  _hideInputError (input) {
     const error = this._formElement.querySelector(`#${input.id}-error`)
     input.classList.remove(this._inputErrorClass);
     error.classList.remove(this._errorClass);
@@ -33,7 +31,7 @@ export class FormValidator {
   };
 
   //проверка валидности
-  _checkInputValidation = (input) => {
+  _checkInputValidation (input) {
     if (!input.validity.valid) {
       this._showInputError(input, input.validationMessage);
     } else {
@@ -61,12 +59,6 @@ export class FormValidator {
 
   //слушатель input для проверки
   _setEventListeners = () => {
-    this._formElement.addEventListener('reset', () => {
-      setTimeout(() => {
-        this._toggleButton()
-      }, 0);
-    });
-
     this._inputs.forEach((input) => {
       input.addEventListener('input', () => {
         this._checkInputValidation(input)
