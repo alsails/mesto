@@ -1,11 +1,12 @@
-export class Card {
-  constructor(data, templateSelector, handleCardPopUpOpen) {
+export default class Card {
+  constructor(data, templateSelector, handleCardClick) {
     this._name = data.name;
     this._img = data.link;
     this._templateSelector = templateSelector;
-    this._handleCardPopUpOpen = handleCardPopUpOpen;
+    this._handleCardClick = handleCardClick;
   }
 
+  //получение темплейта
   _getTemplate() {
     const card = document
       .querySelector(this._templateSelector)
@@ -15,6 +16,7 @@ export class Card {
     return card;
   }
 
+  //создание карточи
   generateCard() {
     this._element = this._getTemplate();
 
@@ -29,21 +31,24 @@ export class Card {
     return this._element;
   }
 
+  //работа с лайками
   _like() {
     this._likeButton.classList.toggle('card__like_active');
   }
 
+  //удаление карточки
   _del() {
     this._element.remove();
     this._element = null;
   }
 
+  //слушаетели
   _setEventListeners() {
     this._likeButton = this._element.querySelector('.card__like');
     this._delButton = this._element.querySelector('.card__trash');
 
     this._cardImg.addEventListener('click', () => {
-      this._handleCardPopUpOpen(this._img, this._name);
+      this._handleCardClick(this._img, this._name);
     })
 
     this._likeButton.addEventListener('click', () => { this._like() });

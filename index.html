@@ -39,7 +39,7 @@
       <p class="footer__copyright">© 2022 Mesto Russia</p>
     </footer>
 
-    <div class="popup" id="profile">
+    <div class="popup popup_type_profile" id="profile">
       <div class="popup__profile popup__container">
         <button type="button" id="profile-close" class="popup__close-button"></button>
         <h2 class="popup__title">Редактировать профиль</h2>
@@ -48,17 +48,17 @@
           <span id="name-input-error" class="form__error form__error-visible"></span>
           <input id="description-input" type="text" class="form__input" name="description" placeholder="О вас" value="" required minlength="2" maxlength="200">
           <span id="description-input-error" class="form__error form__error-visible"></span>
-          <button type="submit"  class="form__save-button form__save-button_disabled">Сохранить</button>
+          <button type="submit"  class="form__save-button form__save-button_disabled type">Сохранить</button>
         </form>
       </div>
     </div>
 
-    <div class="popup" id="card">
+    <div class="popup popup_type_cards" id="card">
       <div class="popup__cards popup__container">
         <button type="button" id="card-close" class="popup__close-button"></button>
         <h2 class="popup__title">Новое место</h2>
         <form action="submit" class="form" name="addCard" novalidate>
-          <input id="title-input" type="text" class="form__input" name="title" placeholder="Название" value="" required minlength="2" maxlength="30">
+          <input id="title-input" type="text" class="form__input" name="name" placeholder="Название" value="" required minlength="2" maxlength="30">
           <span id="title-input-error" class="form__error form__error-visible"></span>
           <input id="link-input" type="url" class="form__input" name="link" placeholder="Ссылка на картинку" value="" required>
           <span id="link-input-error" class="form__error form__error-visible"></span>
@@ -87,7 +87,7 @@
     </li>
   </template>
 
-  <script type="module" src="./scripts/index.js"></script>
+  <script type="module" src="./scripts/pages/index.js"></script>
 </body>
 
 </html>

@@ -1,15 +1,16 @@
-export class FormValidator {
+export default class FormValidator {
   constructor(settings, formElement) {
-    this._formElement = formElement,
+    this._formElement = document.querySelector(formElement),
       this._inputSelector = settings.inputSelector,
       this._submitButtonSelector = settings.submitButtonSelector,
       this._inactiveButtonClass = settings.inactiveButtonClass,
       this._inputErrorClass = settings.inputErrorClass,
       this._errorClass = settings.errorClass,
-      this._inputs = Array.from(formElement.querySelectorAll(settings.inputSelector));
-    this._button = formElement.querySelector(settings.submitButtonSelector);
+      this._inputs = Array.from(this._formElement.querySelectorAll(settings.inputSelector));
+    this._button = this._formElement.querySelector(settings.submitButtonSelector);
   }
 
+  //сброс ошибок
   resetError () {
     this._inputs.forEach((input) => this._hideInputError(input))
     this._toggleButton()
