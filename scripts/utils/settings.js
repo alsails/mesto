@@ -1,27 +1,36 @@
+import brazil from '../../images/brazil.jpg';
+import czech from '../../images/czech.jpg';
+import japan from '../../images/japan.jpg';
+import finland from '../../images/finland.jpg';
+import switzerland from '../../images/Switzerland.jpg';
+import thailland from '../../images/thailland.jpg';
+
+
+
 export const initialCards = [
   {
     name: 'Бразилия',
-    link: './images/brazil.jpg'
+    link: brazil
   },
   {
     name: 'Чехия',
-    link: './images/czech.jpg'
+    link: czech
   },
   {
     name: 'Япония',
-    link: './images/japan.jpg'
+    link: japan
   },
   {
     name: 'Финляндия',
-    link: './images/finland.jpg'
+    link: finland
   },
   {
     name: 'Швейцария',
-    link: './images/Switzerland.jpg'
+    link: switzerland
   },
   {
     name: 'Тайланд',
-    link: './images/thailland.jpg'
+    link: thailland
   }
 ];
 
