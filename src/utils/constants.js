@@ -8,14 +8,11 @@ export const cardListSelector = '.cards';
 export const profileName = document.querySelector('.profile__name');
 export const profileDescription = document.querySelector('.profile__description');
 
-//инпуты в форме редактировоания информации о провиле
+//инпуты в форме редактировоания информации о профиле
+export const profileForm = document.querySelector('[name="editProfile"]');
 export const nameInput = profileForm.querySelector('[name="name"]');
 export const descriptionInput = profileForm.querySelector('[name="description"]');
 
 //кнопки открытия popup
 export const buttonEditProfile = document.querySelector('.profile__edit-button');
 export const buttonAddCard = document.querySelector('.profile__add-button');
-
-
-
-

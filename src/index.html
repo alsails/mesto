@@ -8,19 +8,19 @@
   <meta name="description" content="Mesto - проект об интереснах местах, добавляй, делись, путешествуй.">
   <meta name="keywords" content="Места, место, интеренсные места, путешествия">
   <meta name="author" content="Погонина Мария">
-  <link rel="stylesheet" href="./pages/index.css">
+  <!-- <link rel="stylesheet" href="./pages/index.css"> -->
   <title>Mesto</title>
 </head>
 
 <body class="root">
   <div class="page">
     <header class="header">
-      <img src="./images/logo.svg" alt="Логотип" class="header__logo">
+      <img src="<%=require('./images/logo.svg')%>" alt="Логотип" class="header__logo">
     </header>
 
     <main>
       <section class="profile">
-        <img src="./images/avatar.jpg" alt="" class="profile__img">
+        <img src="<%=require('./images/avatar.jpg')%>" alt="" class="profile__img">
         <div class="profile__info">
           <h1 class="profile__name">Погонина Мария</h1>
           <p class="profile__description">Исследователь мира</p>
@@ -87,7 +87,7 @@
     </li>
   </template>
 
-  <script type="module" src="./scripts/pages/index.js"></script>
+  <!-- <script type="module" src="./pages/index.js"></script> -->
 </body>
 
 </html>
