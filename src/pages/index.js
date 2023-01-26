@@ -1,5 +1,9 @@
+<<<<<<< HEAD:src/pages/index.js
 import './index.css'
 
+=======
+import '../../pages/index.css'
+>>>>>>> 988141d4e9ae32b4b50c367d99b95a6e303b4fb0:scripts/pages/index.js
 import Card from "../components/Card.js"
 import PopupWithForm from "../components/PopupWithForm.js"
 import PopupWithImage from "../components/PopupWithImage.js"
