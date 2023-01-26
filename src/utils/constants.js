@@ -5,8 +5,8 @@ export const popUpPhoto = '.popup_type_photos';
 export const cardListSelector = '.cards';
 
 //информация о профиле
-export const profileName = document.querySelector('.profile__name');
-export const profileDescription = document.querySelector('.profile__description');
+export const profileName = '.profile__name';
+export const profileDescription = '.profile__description';
 
 //инпуты в форме редактировоания информации о профиле
 export const profileForm = document.querySelector('[name="editProfile"]');
