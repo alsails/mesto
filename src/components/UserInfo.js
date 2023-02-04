@@ -1,7 +1,8 @@
 export default class UserInfo {
-  constructor(nameSelector, descriptionSelector) {
+  constructor(nameSelector, descriptionSelector, imageSelector) {
     this._name = document.querySelector(nameSelector);
     this._description = document.querySelector(descriptionSelector);
+    this._imageSelector = document.querySelector(imageSelector);
   }
 
   //получение информации из профиля
@@ -16,5 +17,6 @@ export default class UserInfo {
   setUserInfo(data) {
     this._name.textContent = data.name;
     this._description.textContent = data.description;
+    this._imageSelector.src = data.avatar
   }
 }
