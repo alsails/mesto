@@ -10,4 +10,9 @@
   }
 }
 
+.profile__img:hover {
+  cursor: pointer;
+  opacity: .2;
+}
+
 
