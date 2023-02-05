@@ -34,32 +34,37 @@ const api = new Api(apiConfig)
 
 const userInfo = new UserInfo(profileName, profileDescription, profileAvatar)
 
-api.getUserInfo().then((res) => userInfo.setUserInfo(res)
-)
+api.getInitialCards()
+  .then(res => {
+    cardList.renderItems(res)
+  })
+
+// api.getInitialCards().then((res) => )
+api.getUserInfo().then((res) => userInfo.setUserInfo(res))
+
 
 // const popupImg = new PopupWithImage(popUpPhoto)
 // const popupEditProfile = new PopupWithForm(popUpEditProfile, handleSubmitEditProfileForm)
 // const popupAddCard = new PopupWithForm(popUpAddCard, handleSubmitAddCardForm)
 // const popupAvatar = new PopupWithForm(popUpAvatar, handleSubmitChangeAvatar)
-// const cardList = new Section({ items: initialCards, renderer: renderCard }, cardListSelector)
+const cardList = new Section({renderer: renderCard}, cardListSelector)
 
 // const validatorForPopUpEditProfile = new FormValidator(settings, popUpEditProfile)
 // const validatorForPopUpAddCard = new FormValidator(settings, popUpAddCard)
 // const validatorForPopUpChangeAvatar = new FormValidator(settings, popUpAvatar)
 
-// api.getInitialCards()
 // //открытие popup с картинкой
-// const handleCardClick = (link, name) => popupImg.open(link, name)
+const handleCardClick = (link, name) => popupImg.open(link, name)
 
-// //функция для создания нового объекта класса
-// const newCard = (item) => {
-//   return new Card(item, '.сard-template', handleCardClick).generateCard()
-// }
+//функция для создания нового объекта класса
+const newCard = (data) => {
+  return new Card(data, '.сard-template', handleCardClick).generateCard()
+}
 
-// //функция для добавления новой карточки на страницу
-// function renderCard(item) {
-//   cardList.addItem(newCard(item))
-// }
+//функция для добавления новой карточки на страницу
+function renderCard(data) {
+  cardList.addItem(newCard(data))
+}
 
 // //функция открытия popup редактирования профиля
 // function handleOpenPopupProfileEdit() {

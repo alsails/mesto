@@ -6,15 +6,13 @@ export default class Api {
 
   getInitialCards() {
     return fetch(`${this.baseUrl}/cards`, {
-      headers: this.headers.authorization
+      method: 'GET',
+      headers: this.headers
     })
       .then(res => {
         if (res.ok) {
           return res.json();
         }
-      })
-      .then(data => {
-        console.log(data)
       })
   }
 

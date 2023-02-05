@@ -2,6 +2,7 @@ export default class Card {
   constructor(data, templateSelector, handleCardClick) {
     this._name = data.name;
     this._img = data.link;
+    this._id = data.id;
     this._templateSelector = templateSelector;
     this._handleCardClick = handleCardClick;
   }
