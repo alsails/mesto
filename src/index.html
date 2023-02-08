@@ -89,7 +89,7 @@
         <button type="button" id="avatar-close" class="popup__close-button"></button>
         <h2 class="popup__title">Обновить аватар</h2>
         <form action="submit" class="form" name="changeAvatar" novalidate>
-          <input id="link-input" type="url" class="form__input" name="link" placeholder="Ссылка на картинку" value="" required>
+          <input id="link-input" type="url" class="form__input" name="avatar" placeholder="Ссылка на картинку" value="" required>
           <span id="link-input-error" class="form__error form__error-visible"></span>
           <button type="submit" class="form__save-button form__save-button_disabled">Сохранить</button>
         </form>
@@ -103,7 +103,10 @@
       <img src="#" alt="картинка" class="card__img">
       <div class="card__info">
         <h2 class="card__name"></h2>
-        <button type="button" class="card__like "></button>
+        <div class="card__likes">
+          <button type="button" class="card__like "></button>
+          <p class="card__like-number"></p>
+        </div>
       </div>
     </li>
   </template>

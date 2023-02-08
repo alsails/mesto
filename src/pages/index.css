@@ -22,7 +22,9 @@
 @import url(../blocks/card/__img/card__img.css);
 @import url(../blocks/card/__info/card__info.css);
 @import url(../blocks/card/__name/card__name.css);
+@import url(../blocks/card/__likes/card__likes.css);
 @import url(../blocks/card/__like/card__like.css);
+@import url(../blocks/card/__like/__like-number/card__like-number.css);
 @import url(../blocks/card/__like/_active/card__like_active.css);
 
 @import url(../blocks/footer/footer.css);

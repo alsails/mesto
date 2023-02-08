@@ -2,7 +2,8 @@ export default class Card {
   constructor(data, templateSelector, handleCardClick) {
     this._name = data.name;
     this._img = data.link;
-    this._id = data.id;
+    this._id = data.owner._id;
+    this._likes = data.likes;
     this._templateSelector = templateSelector;
     this._handleCardClick = handleCardClick;
   }
@@ -23,10 +24,13 @@ export default class Card {
 
     this._cardImg = this._element.querySelector('.card__img');
     this._cardName = this._element.querySelector('.card__name');
+    this._cardLikeNumber = this._element.querySelector('.card__like-number');
+    console.log(`like ${this._likes}`)
 
     this._cardImg.src = this._img;
     this._cardImg.alt = this._name;
     this._cardName.textContent = this._name;
+    this._cardLikeNumber.textContent = this._likes;
 
     this._setEventListeners();
     return this._element;

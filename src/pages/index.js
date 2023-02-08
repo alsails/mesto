@@ -36,22 +36,31 @@ const userInfo = new UserInfo(profileName, profileDescription, profileAvatar)
 
 api.getInitialCards()
   .then(res => {
+    console.log(res)
     cardList.renderItems(res)
   })
 
-// api.getInitialCards().then((res) => )
-api.getUserInfo().then((res) => userInfo.setUserInfo(res))
+
+api.getUserInfo().
+  then((res) => {
+    const userInformation = {
+      name: res.name,
+      description: res.about,
+      avatar: res.avatar
+    }
+    userInfo.setUserInfo(userInformation)
+})
 
 
 // const popupImg = new PopupWithImage(popUpPhoto)
 // const popupEditProfile = new PopupWithForm(popUpEditProfile, handleSubmitEditProfileForm)
 // const popupAddCard = new PopupWithForm(popUpAddCard, handleSubmitAddCardForm)
-// const popupAvatar = new PopupWithForm(popUpAvatar, handleSubmitChangeAvatar)
-const cardList = new Section({renderer: renderCard}, cardListSelector)
+const popupAvatar = new PopupWithForm(popUpAvatar, handleSubmitChangeAvatar)
+const cardList = new Section({ renderer: renderCard }, cardListSelector)
 
 // const validatorForPopUpEditProfile = new FormValidator(settings, popUpEditProfile)
 // const validatorForPopUpAddCard = new FormValidator(settings, popUpAddCard)
-// const validatorForPopUpChangeAvatar = new FormValidator(settings, popUpAvatar)
+const validatorForPopUpChangeAvatar = new FormValidator(settings, popUpAvatar)
 
 // //открытие popup с картинкой
 const handleCardClick = (link, name) => popupImg.open(link, name)
@@ -81,10 +90,10 @@ function renderCard(data) {
 //   popupAddCard.open();
 // }
 
-// function handleOpenPopupChangeAvatar() {
-//   validatorForPopUpChangeAvatar.resetError()
-//   popupAvatar.open();
-// }
+function handleOpenPopupChangeAvatar() {
+  validatorForPopUpChangeAvatar.resetError()
+  popupAvatar.open();
+}
 
 // //функция сабмита формы редактирования профиля
 // function handleSubmitEditProfileForm(data) {
@@ -98,9 +107,21 @@ function renderCard(data) {
 //   popupAddCard.close()
 // }
 
+function handleSubmitChangeAvatar(data) {
+  api.updateUserInfo(data.avatar);
+  popupAvatar.close()
+}
+
 // function handleSubmitChangeAvatar(data) {
-//   renderCard(data)
-//   popupAddCard.close()
+//   const profileInfo = userInfo.getUserInfo()
+//   const userInformation = {
+//     name: profileInfo.name,
+//     description: profileInfo.description,
+//     avatar: data.avatar
+//   }
+//   userInfo.setUserInfo(userInformation);
+//   api.putUserInfo(data.avatar);
+//   popupAvatar.close()
 // }
 
 // //отрисвока карточек из списка
@@ -109,17 +130,17 @@ function renderCard(data) {
 // //слушатели для кнопок открытия popup'ов
 // buttonEditProfile.addEventListener('click', () => handleOpenPopupProfileEdit())
 // buttonAddCard.addEventListener('click', () => handleOpenPopupAddCard())
-// buttonChangeAvatar.addEventListener('click', () => handleOpenPopupChangeAvatar())
+buttonChangeAvatar.addEventListener('click', () => handleOpenPopupChangeAvatar())
 
 // //добавление слушателе для popup'ов
 // popupImg.setEventsListeners()
 // popupEditProfile.setEventsListeners()
 // popupAddCard.setEventsListeners()
-// popupAvatar.setEventsListeners()
+popupAvatar.setEventsListeners()
 
 // //запуск валидации форм
 // validatorForPopUpEditProfile.enableValidation()
 // validatorForPopUpAddCard.enableValidation()
-// validatorForPopUpChangeAvatar.enableValidation()
+validatorForPopUpChangeAvatar.enableValidation()
 
 

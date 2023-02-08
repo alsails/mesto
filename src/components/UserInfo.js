@@ -18,5 +18,6 @@ export default class UserInfo {
     this._name.textContent = data.name;
     this._description.textContent = data.description;
     this._imageSelector.src = data.avatar
+    const id = data.id;
   }
 }

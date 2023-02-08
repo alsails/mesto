@@ -1,5 +1,5 @@
 export default class Api {
-  constructor({baseUrl, headers}) {
+  constructor({ baseUrl, headers }) {
     this.baseUrl = baseUrl;
     this.headers = headers;
   }
@@ -18,18 +18,30 @@ export default class Api {
 
   getUserInfo() {
     return fetch(`${this.baseUrl}/users/me`, {
+      method: 'GET',
       headers: this.headers
     })
-      .then(res =>
-           res.json())
-      .then(data => {
-        const userinfo = {
-          name: data.name,
-          description: data.about,
-          avatar: data.avatar
+      .then(res => {
+        if (res.ok) {
+          return res.json();
         }
-        return userinfo
       })
+  }
+
+  updateUserInfo(data) {
+    return fetch(`${this.baseUrl}/users/me/avatar`, {
+      method: 'PATCH',
+      body: JSON.stringify({
+        avatar: data
+      }),
+      headers: this.headers
+    })
+    .then(res => {
+      if (res.ok) {
+        return res.json();
+      }
+    })
+    .then(data => console.log(data))
   }
 }
 
