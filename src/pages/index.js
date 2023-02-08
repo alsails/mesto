@@ -54,12 +54,12 @@ api.getUserInfo().
 
 const popupImg = new PopupWithImage(popUpPhoto)
 const popupEditProfile = new PopupWithForm(popUpEditProfile, handleSubmitEditProfileForm)
-// const popupAddCard = new PopupWithForm(popUpAddCard, handleSubmitAddCardForm)
+const popupAddCard = new PopupWithForm(popUpAddCard, handleSubmitAddCardForm)
 const popupAvatar = new PopupWithForm(popUpAvatar, handleSubmitChangeAvatar)
 const cardList = new Section({ renderer: renderCard }, cardListSelector)
 
 const validatorForPopUpEditProfile = new FormValidator(settings, popUpEditProfile)
-// const validatorForPopUpAddCard = new FormValidator(settings, popUpAddCard)
+const validatorForPopUpAddCard = new FormValidator(settings, popUpAddCard)
 const validatorForPopUpChangeAvatar = new FormValidator(settings, popUpAvatar)
 
 // //открытие popup с картинкой
@@ -84,11 +84,11 @@ function handleOpenPopupProfileEdit() {
   popupEditProfile.open();
 }
 
-// //функция открытия popup добавления новой карточки
-// function handleOpenPopupAddCard() {
-//   validatorForPopUpAddCard.resetError()
-//   popupAddCard.open();
-// }
+//функция открытия popup добавления новой карточки
+function handleOpenPopupAddCard() {
+  validatorForPopUpAddCard.resetError()
+  popupAddCard.open();
+}
 
 function handleOpenPopupChangeAvatar() {
   validatorForPopUpChangeAvatar.resetError()
@@ -102,11 +102,12 @@ function handleSubmitEditProfileForm(data) {
   popupEditProfile.close()
 }
 
-// //функция сабмита формы добавления новой карточки
-// function handleSubmitAddCardForm(data) {
-//   renderCard(data)
-//   popupAddCard.close()
-// }
+//функция сабмита формы добавления новой карточки
+function handleSubmitAddCardForm(data) {
+  renderCard(data)
+  api.addNewCard(data)
+  popupAddCard.close()
+}
 
 function handleSubmitChangeAvatar(data) {
   api.updateUserAvatar(data.avatar);
@@ -115,18 +116,18 @@ function handleSubmitChangeAvatar(data) {
 
 //слушатели для кнопок открытия popup'ов
 buttonEditProfile.addEventListener('click', () => handleOpenPopupProfileEdit())
-// buttonAddCard.addEventListener('click', () => handleOpenPopupAddCard())
+buttonAddCard.addEventListener('click', () => handleOpenPopupAddCard())
 buttonChangeAvatar.addEventListener('click', () => handleOpenPopupChangeAvatar())
 
 //добавление слушателе для popup'ов
 popupImg.setEventsListeners()
 popupEditProfile.setEventsListeners()
-// popupAddCard.setEventsListeners()
+popupAddCard.setEventsListeners()
 popupAvatar.setEventsListeners()
 
 //запуск валидации форм
 validatorForPopUpEditProfile.enableValidation()
-// validatorForPopUpAddCard.enableValidation()
+validatorForPopUpAddCard.enableValidation()
 validatorForPopUpChangeAvatar.enableValidation()
 
 

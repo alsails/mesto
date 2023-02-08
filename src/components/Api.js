@@ -60,5 +60,22 @@ export default class Api {
     })
     .then(data => console.log(data))
   }
+
+  addNewCard(data) {
+    return fetch(`${this.baseUrl}/cards`, {
+      method: 'POST',
+      body: JSON.stringify({
+        name: data.name,
+        link: data.link
+      }),
+      headers: this.headers
+    })
+    .then(res => {
+      if (res.ok) {
+        return res.json();
+      }
+    })
+    .then(data => console.log(data))
+  }
 }
 
