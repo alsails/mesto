@@ -52,7 +52,7 @@ api.getUserInfo().
 })
 
 
-// const popupImg = new PopupWithImage(popUpPhoto)
+const popupImg = new PopupWithImage(popUpPhoto)
 const popupEditProfile = new PopupWithForm(popUpEditProfile, handleSubmitEditProfileForm)
 // const popupAddCard = new PopupWithForm(popUpAddCard, handleSubmitAddCardForm)
 const popupAvatar = new PopupWithForm(popUpAvatar, handleSubmitChangeAvatar)
@@ -119,7 +119,7 @@ buttonEditProfile.addEventListener('click', () => handleOpenPopupProfileEdit())
 buttonChangeAvatar.addEventListener('click', () => handleOpenPopupChangeAvatar())
 
 //добавление слушателе для popup'ов
-// popupImg.setEventsListeners()
+popupImg.setEventsListeners()
 popupEditProfile.setEventsListeners()
 // popupAddCard.setEventsListeners()
 popupAvatar.setEventsListeners()
