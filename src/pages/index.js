@@ -53,12 +53,12 @@ api.getUserInfo().
 
 
 // const popupImg = new PopupWithImage(popUpPhoto)
-// const popupEditProfile = new PopupWithForm(popUpEditProfile, handleSubmitEditProfileForm)
+const popupEditProfile = new PopupWithForm(popUpEditProfile, handleSubmitEditProfileForm)
 // const popupAddCard = new PopupWithForm(popUpAddCard, handleSubmitAddCardForm)
 const popupAvatar = new PopupWithForm(popUpAvatar, handleSubmitChangeAvatar)
 const cardList = new Section({ renderer: renderCard }, cardListSelector)
 
-// const validatorForPopUpEditProfile = new FormValidator(settings, popUpEditProfile)
+const validatorForPopUpEditProfile = new FormValidator(settings, popUpEditProfile)
 // const validatorForPopUpAddCard = new FormValidator(settings, popUpAddCard)
 const validatorForPopUpChangeAvatar = new FormValidator(settings, popUpAvatar)
 
@@ -75,14 +75,14 @@ function renderCard(data) {
   cardList.addItem(newCard(data))
 }
 
-// //функция открытия popup редактирования профиля
-// function handleOpenPopupProfileEdit() {
-//   const profileInfo = userInfo.getUserInfo()
-//   nameInput.value = profileInfo.name
-//   descriptionInput.value = profileInfo.description
-//   validatorForPopUpEditProfile.resetError()
-//   popupEditProfile.open();
-// }
+//функция открытия popup редактирования профиля
+function handleOpenPopupProfileEdit() {
+  const profileInfo = userInfo.getUserInfo()
+  nameInput.value = profileInfo.name
+  descriptionInput.value = profileInfo.description
+  validatorForPopUpEditProfile.resetError()
+  popupEditProfile.open();
+}
 
 // //функция открытия popup добавления новой карточки
 // function handleOpenPopupAddCard() {
@@ -95,11 +95,12 @@ function handleOpenPopupChangeAvatar() {
   popupAvatar.open();
 }
 
-// //функция сабмита формы редактирования профиля
-// function handleSubmitEditProfileForm(data) {
-//   userInfo.setUserInfo(data);
-//   popupEditProfile.close()
-// }
+//функция сабмита формы редактирования профиля
+function handleSubmitEditProfileForm(data) {
+  userInfo.setUserInfo(data);
+  api.updateUserInfo(data);
+  popupEditProfile.close()
+}
 
 // //функция сабмита формы добавления новой карточки
 // function handleSubmitAddCardForm(data) {
@@ -108,38 +109,23 @@ function handleOpenPopupChangeAvatar() {
 // }
 
 function handleSubmitChangeAvatar(data) {
-  api.updateUserInfo(data.avatar);
+  api.updateUserAvatar(data.avatar);
   popupAvatar.close()
 }
 
-// function handleSubmitChangeAvatar(data) {
-//   const profileInfo = userInfo.getUserInfo()
-//   const userInformation = {
-//     name: profileInfo.name,
-//     description: profileInfo.description,
-//     avatar: data.avatar
-//   }
-//   userInfo.setUserInfo(userInformation);
-//   api.putUserInfo(data.avatar);
-//   popupAvatar.close()
-// }
-
-// //отрисвока карточек из списка
-// cardList.renderItems();
-
-// //слушатели для кнопок открытия popup'ов
-// buttonEditProfile.addEventListener('click', () => handleOpenPopupProfileEdit())
+//слушатели для кнопок открытия popup'ов
+buttonEditProfile.addEventListener('click', () => handleOpenPopupProfileEdit())
 // buttonAddCard.addEventListener('click', () => handleOpenPopupAddCard())
 buttonChangeAvatar.addEventListener('click', () => handleOpenPopupChangeAvatar())
 
-// //добавление слушателе для popup'ов
+//добавление слушателе для popup'ов
 // popupImg.setEventsListeners()
-// popupEditProfile.setEventsListeners()
+popupEditProfile.setEventsListeners()
 // popupAddCard.setEventsListeners()
 popupAvatar.setEventsListeners()
 
-// //запуск валидации форм
-// validatorForPopUpEditProfile.enableValidation()
+//запуск валидации форм
+validatorForPopUpEditProfile.enableValidation()
 // validatorForPopUpAddCard.enableValidation()
 validatorForPopUpChangeAvatar.enableValidation()
 
