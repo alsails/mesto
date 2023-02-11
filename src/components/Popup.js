@@ -2,6 +2,7 @@ export default class Popup {
   constructor(selectorPopup) {
     this._popup = document.querySelector(selectorPopup);
     this._handleEscClose = this._handleEscClose.bind(this);
+    this._submitButton = this._popup.querySelector('.form__save-button')
   }
 
   //открытие popup'ов
@@ -21,6 +22,10 @@ export default class Popup {
     if (evt.key === 'Escape') {
       this.close();
     }
+  }
+
+  buttonStatusData(text) {
+      this._submitButton.textContent = `${text}`
   }
 
   //слушатели для закрытия по overlay и крестику

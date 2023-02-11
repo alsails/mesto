@@ -3,21 +3,27 @@ export default class UserInfo {
     this._name = document.querySelector(nameSelector);
     this._description = document.querySelector(descriptionSelector);
     this._imageSelector = document.querySelector(imageSelector);
+
   }
 
   //получение информации из профиля
   getUserInfo() {
     return {
       name: this._name.textContent,
-      description: this._description.textContent
+      description: this._description.textContent,
+      avatar: this._imageSelector.src,
     }
   }
 
   //вставка в профиль
   setUserInfo(data) {
-    this._name.textContent = data.name;
-    this._description.textContent = data.description;
-    this._imageSelector.src = data.avatar
-    const id = data.id;
+        if (data.name) this._name.textContent = data.name;
+        if (data.description) this._description.textContent = data.description;
+        if (data.avatar) this._imageSelector.src = data.avatar
+        if (data.userId) this._userId = data.userId
+  }
+
+  getUserId() {
+    return this._userId
   }
 }

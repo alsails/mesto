@@ -13,6 +13,7 @@ export default class Api {
         if (res.ok) {
           return res.json();
         }
+        return Promise.reject(`Ошибка: ${res.status}`);
       })
   }
 
@@ -25,6 +26,7 @@ export default class Api {
         if (res.ok) {
           return res.json();
         }
+        return Promise.reject(`Ошибка: ${res.status}`);
       })
   }
 
@@ -40,8 +42,8 @@ export default class Api {
       if (res.ok) {
         return res.json();
       }
+      return Promise.reject(`Ошибка: ${res.status}`);
     })
-    .then(data => console.log(data))
   }
 
   updateUserInfo(data) {
@@ -57,8 +59,8 @@ export default class Api {
       if (res.ok) {
         return res.json();
       }
+      return Promise.reject(`Ошибка: ${res.status}`);
     })
-    .then(data => console.log(data))
   }
 
   addNewCard(data) {
@@ -74,8 +76,47 @@ export default class Api {
       if (res.ok) {
         return res.json();
       }
+      return Promise.reject(`Ошибка: ${res.status}`);
+    });
+  }
+
+  delCard(data) {
+    return fetch(`${this.baseUrl}/cards/${data}`, {
+      method: 'DELETE',
+      headers: this.headers
     })
-    .then(data => console.log(data))
+    .then(res => {
+      if (res.ok) {
+        return res.json();
+      }
+      return Promise.reject(`Ошибка: ${res.status}`);
+    });
+  }
+
+  delLike(data) {
+    return fetch(`${this.baseUrl}/cards/${data}/likes`, {
+      method: 'DELETE',
+      headers: this.headers
+    })
+    .then(res => {
+      if (res.ok) {
+        return res.json();
+      }
+      return Promise.reject(`Ошибка: ${res.status}`);
+    })
+  }
+
+  putLike(data) {
+    return fetch(`${this.baseUrl}/cards/${data}/likes`, {
+      method: 'PUT',
+      headers: this.headers
+    })
+    .then(res => {
+      if (res.ok) {
+        return res.json();
+      }
+      return Promise.reject(`Ошибка: ${res.status}`);
+    })
   }
 }
 

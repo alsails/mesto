@@ -1,5 +1,4 @@
 .form__save-button {
-  padding: 12px 125px 16px 125px;
   margin-top: 23px;
 
   font-style: normal;
@@ -7,6 +6,9 @@
   font-size: 18px;
   line-height: 22px;
   text-align: center;
+  text-overflow: ellipsis;
+  width: 100%;
+  height: 50px;
 
   color: #FFFFFF;
 
@@ -24,8 +26,6 @@
 
 @media screen and (max-width: 550px) {
   .form__save-button {
-    padding: 14px 82px;
-
     font-size: 14px;
     line-height: 17px;
   }

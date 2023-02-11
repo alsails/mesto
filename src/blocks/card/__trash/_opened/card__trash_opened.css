@@ -1,0 +1,4 @@
+.card__trash_opened {
+  visibility: visible;
+  opacity: 1;
+}

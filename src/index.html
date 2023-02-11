@@ -16,7 +16,6 @@
     <header class="header">
       <img src="<%=require('./images/logo.svg')%>" alt="Логотип" class="header__logo">
     </header>
-
     <main>
       <section class="profile">
         <div class="profile__img-container">
@@ -29,45 +28,44 @@
         </div>
         <button type="button" class="profile__add-button"></button>
       </section>
-
       <section class="places">
         <ul class="cards">
         </ul>
       </section>
     </main>
-
     <footer class="footer">
       <p class="footer__copyright">© 2022 Mesto Russia</p>
     </footer>
-
     <div class="popup popup_type_profile" id="profile">
       <div class="popup__profile popup__container">
         <button type="button" id="profile-close" class="popup__close-button"></button>
         <h2 class="popup__title">Редактировать профиль</h2>
         <form action="submit" class="form" name="editProfile" novalidate>
-          <input type="text" id="name-input" class="form__input" name="name" placeholder="Ваше Имя" value="" required minlength="2" maxlength="40">
+          <input type="text" id="name-input" class="form__input" name="name" placeholder="Ваше Имя" value="" required
+            minlength="2" maxlength="40">
           <span id="name-input-error" class="form__error form__error-visible"></span>
-          <input id="description-input" type="text" class="form__input" name="description" placeholder="О вас" value="" required minlength="2" maxlength="200">
+          <input id="description-input" type="text" class="form__input" name="description" placeholder="О вас" value=""
+            required minlength="2" maxlength="200">
           <span id="description-input-error" class="form__error form__error-visible"></span>
-          <button type="submit"  class="form__save-button form__save-button_disabled type">Сохранить</button>
+          <button type="submit" class="form__save-button form__save-button_disabled type">Сохранить</button>
         </form>
       </div>
     </div>
-
     <div class="popup popup_type_cards" id="card">
       <div class="popup__cards popup__container">
         <button type="button" id="card-close" class="popup__close-button"></button>
         <h2 class="popup__title">Новое место</h2>
         <form action="submit" class="form" name="addCard" novalidate>
-          <input id="title-input" type="text" class="form__input" name="name" placeholder="Название" value="" required minlength="2" maxlength="30">
+          <input id="title-input" type="text" class="form__input" name="name" placeholder="Название" value="" required
+            minlength="2" maxlength="30">
           <span id="title-input-error" class="form__error form__error-visible"></span>
-          <input id="link-input" type="url" class="form__input" name="link" placeholder="Ссылка на картинку" value="" required>
+          <input id="link-input" type="url" class="form__input" name="link" placeholder="Ссылка на картинку" value=""
+            required>
           <span id="link-input-error" class="form__error form__error-visible"></span>
           <button type="submit" class="form__save-button form__save-button_disabled">Создать</button>
         </form>
       </div>
     </div>
-
     <div class="popup popup_type_photos" id="photo">
       <div class="popup__photo ">
         <button type="button" id="photo-close" class="popup__close-button popup__close-button_photo"></button>
@@ -75,28 +73,28 @@
         <p class="popup__description"></p>
       </div>
     </div>
-
     <div class="popup popup_type_del" id="del">
       <div class="popup__del popup__container">
         <button type="button" id="card-close" class="popup__close-button"></button>
-        <h2 class="popup__title">Вы уверены?</h2>
-        <button type="submit" class="popup__save-button">Да</button>
+        <form class="form form_type_del">
+          <h2 class="popup__title">Вы уверены?</h2>
+          <button type="submit" class="form__save-button form__save-button_del">Да</button>
+        </form>
       </div>
     </div>
-
     <div class="popup popup_type_avatar" id="avatar">
       <div class="popup__avatar popup__container">
         <button type="button" id="avatar-close" class="popup__close-button"></button>
         <h2 class="popup__title">Обновить аватар</h2>
         <form action="submit" class="form" name="changeAvatar" novalidate>
-          <input id="link-input" type="url" class="form__input" name="avatar" placeholder="Ссылка на картинку" value="" required>
+          <input id="link-input" type="url" class="form__input" name="avatar" placeholder="Ссылка на картинку" value=""
+            required>
           <span id="link-input-error" class="form__error form__error-visible"></span>
           <button type="submit" class="form__save-button form__save-button_disabled">Сохранить</button>
         </form>
       </div>
     </div>
   </div>
-
   <template id="сard-template" class="сard-template">
     <li class="card">
       <button type="button" class="card__trash"></button>
@@ -110,7 +108,6 @@
       </div>
     </li>
   </template>
-
 </body>
 
 </html>
