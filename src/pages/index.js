@@ -123,6 +123,7 @@ function handleSubmitEditProfileForm(data) {
   popupEditProfile.buttonStatusData('Сохранение...')
   api.updateUserInfo(data)
     .then((data) => {
+      console.log(data)
       userInfo.setUserInfo(data)
       popupEditProfile.close()
     })
@@ -175,7 +176,6 @@ validatorForPopUpChangeAvatar.enableValidation()
 
 api.getInitialCards()
   .then(res => {
-    console.log(res)
     cardList.renderItems(res.reverse())
   })
   .catch((err) => {
@@ -186,11 +186,10 @@ api.getUserInfo()
   .then((res) => {
     const userInformation = {
       name: res.name,
-      description: res.about,
+      about: res.about,
       avatar: res.avatar,
       userId: res._id
     }
-    console.log(userInformation)
     userInfo.setUserInfo(userInformation)
   })
   .catch((err) => {

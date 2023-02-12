@@ -75,7 +75,7 @@
     </div>
     <div class="popup popup_type_del" id="del">
       <div class="popup__del popup__container">
-        <button type="button" id="card-close" class="popup__close-button"></button>
+        <button type="button" id="del-close" class="popup__close-button"></button>
         <form class="form form_type_del">
           <h2 class="popup__title">Вы уверены?</h2>
           <button type="submit" class="form__save-button form__save-button_del">Да</button>
@@ -87,9 +87,9 @@
         <button type="button" id="avatar-close" class="popup__close-button"></button>
         <h2 class="popup__title">Обновить аватар</h2>
         <form action="submit" class="form" name="changeAvatar" novalidate>
-          <input id="link-input" type="url" class="form__input" name="avatar" placeholder="Ссылка на картинку" value=""
+          <input id="avatar-input" type="url" class="form__input" name="avatar" placeholder="Ссылка на картинку" value=""
             required>
-          <span id="link-input-error" class="form__error form__error-visible"></span>
+          <span id="avatar-input-error" class="form__error form__error-visible"></span>
           <button type="submit" class="form__save-button form__save-button_disabled">Сохранить</button>
         </form>
       </div>

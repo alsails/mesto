@@ -18,7 +18,7 @@ export default class UserInfo {
   //вставка в профиль
   setUserInfo(data) {
         if (data.name) this._name.textContent = data.name;
-        if (data.description) this._description.textContent = data.description;
+        if (data.about) this._description.textContent = data.about;
         if (data.avatar) this._imageSelector.src = data.avatar
         if (data.userId) this._userId = data.userId
   }
