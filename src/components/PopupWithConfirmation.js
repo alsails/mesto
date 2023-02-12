@@ -7,7 +7,7 @@ export default class PopupWithConfirmation extends Popup {
     this._form = this._popup.querySelector(".form");
   }
 
-  Submit(callback) {
+  setSubmit(callback) {
     this._handleSubmitDelCard = callback;
   }
 

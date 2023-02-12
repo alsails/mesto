@@ -61,7 +61,7 @@ const createCard = (data) => {
     {
       handelDelCard: () => {
         popupWithConfirmation.open()
-        popupWithConfirmation.Submit(() => {
+        popupWithConfirmation.setSubmit(() => {
           popupWithConfirmation.buttonStatusData('Удаление...')
           api.delCard(data._id)
             .then((res) => {
@@ -70,6 +70,9 @@ const createCard = (data) => {
             })
             .catch((err) => {
               console.log(err);
+            })
+            .finally(() => {
+              popupWithConfirmation.buttonStatusData('Да')
             })
         })
       },
@@ -101,8 +104,7 @@ const createCard = (data) => {
 //функция открытия popup редактирования профиля
 function handleOpenPopupProfileEdit() {
   const profileInfo = userInfo.getUserInfo()
-  nameInput.value = profileInfo.name
-  descriptionInput.value = profileInfo.description
+  popupEditProfile.setInputValues(profileInfo)
   validatorForPopUpEditProfile.resetError()
   popupEditProfile.open();
 }
@@ -129,7 +131,10 @@ function handleSubmitEditProfileForm(data) {
     })
     .catch((err) => {
       console.log(err);
-    });
+    })
+    .finally(() => {
+      popupEditProfile.buttonStatusData('Сохранить')
+    })
 }
 
 //функция сабмита формы добавления новой карточки
@@ -142,7 +147,10 @@ function handleSubmitAddCardForm(data) {
     })
     .catch((err) => {
       console.log(err);
-    });
+    })
+    .finally(() => {
+      popupAddCard.buttonStatusData('Сохранить')
+    })
 }
 
 function handleSubmitChangeAvatar(data) {
@@ -154,7 +162,10 @@ function handleSubmitChangeAvatar(data) {
     })
     .catch((err) => {
       console.log(err);
-    });
+    })
+    .finally(() => {
+      popupAvatar.buttonStatusData('Сохранить')
+    })
 }
 
 //слушатели для кнопок открытия popup'ов
@@ -174,24 +185,18 @@ validatorForPopUpEditProfile.enableValidation()
 validatorForPopUpAddCard.enableValidation()
 validatorForPopUpChangeAvatar.enableValidation()
 
-api.getInitialCards()
-  .then(res => {
-    cardList.renderItems(res.reverse())
-  })
-  .catch((err) => {
-    console.log(err);
-  });
-
-api.getUserInfo()
-  .then((res) => {
+Promise.all([api.getUserInfo(), api.getInitialCards()])
+  // тут деструктурируете ответ от сервера, чтобы было понятнее, что пришло
+  .then(([userData, cards]) => {
     const userInformation = {
-      name: res.name,
-      about: res.about,
-      avatar: res.avatar,
-      userId: res._id
+      name: userData.name,
+      about: userData.about,
+      avatar: userData.avatar,
+      userId: userData._id
     }
     userInfo.setUserInfo(userInformation)
+    cardList.renderItems(cards.reverse())
   })
-  .catch((err) => {
+  .catch(err => {
     console.log(err);
   });
